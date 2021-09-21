@@ -29,13 +29,14 @@ class Store {
             this.catalog.addToCatalog(product);
         });
 
+        //TODO: La misma funcion se encarga de dos tareas, buscar forma de mejorarla
         const products = store.getCatalog().allCatalog();
         products.forEach( (product) => {
         productCard.innerHTML += productDetail(product);
-});
+        });
 
+        //NOTE: Solo para control de resultados, luego borrar
         console.log(this.getCatalog());
     }
-
 }
 
