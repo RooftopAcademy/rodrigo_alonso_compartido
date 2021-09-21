@@ -11,49 +11,29 @@ class Store {
         return this.catalog;
     }
 
-    fetchProducts(){
-
-        let productData = [
-            {
-                id:1, 
-                name:"Item 1", 
-                price: 1000, 
-                description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit.",
-                imagen: "img/details-1.jpg"
-            },
-            {
-                id:2, 
-                name:"Item 2", 
-                price: 1200, 
-                description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit.",
-                imagen: "img/details-1.jpg"
-            },
-            {
-                id:3, 
-                name:"Item 3", 
-                price: 1500, 
-                description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit.",
-                imagen: "img/details-1.jpg"
-            },
-            {
-                id:4, 
-                name:"Item 4", 
-                price: 1900, 
-                description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit.",
-                imagen: "img/details-1.jpg"
-            }
-        ];
+    async fetchProducts(productCard){
+       let productData;
+       await fetch("http://demo1372636.mockable.io/api/tina")
+                                        .then(res => res.json())
+                                        .then( json => productData = json )
+                                        .catch( () => console.log("Ocurrio un error"));
 
         productData.forEach( (item) => {
             let product = new Product();
             product.setId(item.id);
-            product.setName(item.name); 
+            product.setName(item.ProductName); 
             product.setPrice(item.price);
             product.setDesription(item.description);
             product.setImage(item.imagen);
 
             this.catalog.addToCatalog(product);
         });
+
+        const products = store.getCatalog().allCatalog();
+        products.forEach( (product) => {
+        productCard.innerHTML += productDetail(product);
+});
+
         console.log(this.getCatalog());
     }
 
