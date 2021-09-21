@@ -19,7 +19,7 @@ class Store {
                                         .catch( () => console.log("Ocurrio un error"));
 
         productData.forEach( (item) => {
-            let product = new Product();
+            const product = new Product();
             product.setId(item.id);
             product.setName(item.ProductName); 
             product.setPrice(item.price);
