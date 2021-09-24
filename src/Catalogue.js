@@ -1,4 +1,4 @@
-class Catalog{
+class Catalogue{
     constructor(){
         this.products = [];
     }
@@ -6,10 +6,10 @@ class Catalog{
         return this.catalog.find(p => p.id == id);
     }
 
-    allCatalog(){
+    getCatalogue(){
         return this.products;
     }
-    addToCatalog(p){
+    add(p){
         this.products.push(p);
     }
 }
