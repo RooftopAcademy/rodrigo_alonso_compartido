@@ -1,13 +1,13 @@
 class Store {
     constructor(){
         this.cart = new Cart();
-        this.catalog = new Catalog();
+        this.catalogue = new Catalogue();
     }
 
     getCart(){
         return this.cart;
     }
-    getCatalog(){
+    getCatalogue(){
         return this.catalog;
     }
 
@@ -16,7 +16,7 @@ class Store {
        await fetch("http://demo1372636.mockable.io/api/tina")
                                         .then(res => res.json())
                                         .then( json => productData = json )
-                                        .catch( () => console.log("Ocurrio un error"));
+                                        .catch( err => console.err("Ocurrio un error.", err));
 
         productData.forEach( (item) => {
             const product = new Product();
@@ -26,17 +26,8 @@ class Store {
             product.setDesription(item.description);
             product.setImage(item.imagen);
 
-            this.catalog.addToCatalog(product);
+            this.catalogue.add(product);
         });
-
-        //TODO: La misma funcion se encarga de dos tareas, buscar forma de mejorarla
-        const products = store.getCatalog().allCatalog();
-        products.forEach( (product) => {
-        productCard.innerHTML += productDetail(product);
-        });
-
-        //NOTE: Solo para control de resultados, luego borrar
-        console.log(this.getCatalog());
     }
 }
 
