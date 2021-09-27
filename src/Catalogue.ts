@@ -1,6 +1,8 @@
-class Catalogue{
+import Product from "./Product";
 
-    private _products: Array<Product>
+export default class Catalogue{
+
+    private _products: Product[]
 
     constructor(){
         this._products = [];
@@ -10,7 +12,7 @@ class Catalogue{
         this._products.push(p);
     }
 
-    public getCatalogue(): Array<Product>{
+    public getAllProducts(): Product[]{
         return this._products;
     }
 

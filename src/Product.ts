@@ -1,4 +1,4 @@
-class Product{
+export default class Product{
 
    private _id!: number;
    private _productName!: string;
@@ -49,13 +49,13 @@ class Product{
      return this._image;
   }
   set image(v:string){
-     this.image = v;
+     this._image = v;
   }   
 
-  get stock(){
-     return this._stock;
-  }
-  set stock(v:number){
-     this._stock = v;
-  }
+//   get stock(){
+//      return this._stock;
+//   }
+//   set stock(v:number){
+//      this._stock = v;
+//   }
 }

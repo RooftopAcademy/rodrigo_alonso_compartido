@@ -1,6 +1,8 @@
-function renderProductList(product:Product):string{
+import Product from "../Product"
+
+export default function renderProductList(product:Product):string{
     return `
-    <div name="card-product" class="d-flex container product-card ">
+    <div name="card-product" class="d-flex container product-card" data-product-id="${product.id}">
         <div class="product-img">
             <img src="${product.image}" alt="">
         </div>
@@ -12,7 +14,7 @@ function renderProductList(product:Product):string{
         <div class="d-flex sell-options">
             <a href="#" class="product-button">Comprar</a>
             <div class="button">
-                <img src="img/img-cart.png" alt="" class="icon">
+                <img src="src/img/img-cart.png" alt="" class="icon">
             </div>
         </div>
     </div>

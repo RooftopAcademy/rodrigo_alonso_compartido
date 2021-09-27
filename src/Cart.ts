@@ -1,4 +1,6 @@
-class Cart{
+import Product from "./Product";
+
+export default class Cart{
 
     private _products: Product[];
 

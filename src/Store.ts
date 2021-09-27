@@ -1,4 +1,8 @@
-class Store {
+import Cart from "./Cart";
+import Catalogue from "./Catalogue";
+import Product from "./Product";
+
+export default class Store {
 
     private _cart: Cart;
     private _catalogue: Catalogue;
@@ -25,13 +29,13 @@ class Store {
             .catch( err => console.log("Ocurrio un error.", err));
 
         productData.forEach( (item) => {
-            const product = new Product();
+            const product: Product = new Product();
+            console.log(item.productName);
             product.id = item.id;
             product.productName = item.productName;
             product.price = item.price;
             product.description = item.description;
             product.image = item.image;
-
             this._catalogue.add(product);
         });
     }
