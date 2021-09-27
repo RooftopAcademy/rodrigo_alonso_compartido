@@ -1,3 +1,0 @@
-class InvitedUser extends User {
-    
-}
