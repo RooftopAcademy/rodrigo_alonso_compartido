@@ -2,6 +2,15 @@ import Cart from "./Cart";
 import Catalogue from "./Catalogue";
 import Product from "./Product";
 
+//NOTE: Preguntar si este tipo se puede usar fuera de esta clase.
+type DatabaseProduct = {
+    id: number,
+    productName: string,
+    image: string,
+    description: string,
+    price: number
+}
+
 export default class Store {
 
     private _cart: Cart;
@@ -21,7 +30,7 @@ export default class Store {
 
     public async fetchProducts(url: string){
         
-        let productData: Product[] = [];
+        let productData: DatabaseProduct[] = [];
         
         await fetch(url)
             .then(res => res.json())
@@ -30,12 +39,13 @@ export default class Store {
 
         productData.forEach( (item) => {
             const product: Product = new Product();
-            console.log(item.productName);
+
             product.id = item.id;
             product.productName = item.productName;
             product.price = item.price;
             product.description = item.description;
             product.image = item.image;
+
             this._catalogue.add(product);
         });
     }

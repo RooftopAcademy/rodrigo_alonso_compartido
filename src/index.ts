@@ -3,20 +3,22 @@ import Catalogue from './Catalogue';
 import Product from './Product';
 import renderProductList from './views/renderProductList';
 import renderHomeView from './views/renderHomeView';
+import getElementFromHomeView from './views/getElementsFromHomeView';
 
-renderHomeView();
-
-let store: Store = new Store();
 const productCard: HTMLElement = document.getElementById("js-product-card") as HTMLElement; //FIXME: No puedo tipar
 const homeView: HTMLElement  = document.getElementById("home-view") as HTMLElement;
-const mainTag : HTMLElement = document.getElementById("main") as HTMLElement;
-// mainTag.innerHTML = renderHomeView();
+const mainTag: HTMLElement = document.getElementById("main") as HTMLElement;
+let btnClothing: HTMLElement;
+
+mainTag.innerHTML= renderHomeView();
 
 homeView.addEventListener("click", (e)=>{
     e.preventDefault();
     mainTag.innerHTML = renderHomeView();
+    btnClothing = getElementFromHomeView();
 })
 
+let store: Store = new Store();
 let url: string = "http://demo1372636.mockable.io/api/tina";
 
 ( async () => {
@@ -35,3 +37,4 @@ let url: string = "http://demo1372636.mockable.io/api/tina";
     });
     
 })();
+
